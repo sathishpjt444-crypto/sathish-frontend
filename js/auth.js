@@ -2,7 +2,7 @@
    LOGIN PAGE JAVASCRIPT
    ======================================== */
 
-const API_BASE_URL = 'https://ai-doc-backend-31kk.onrender.com/api';
+const API_BASE_URL = (window.__ENV && window.__ENV.VITE_API_URL) || 'https://ai-doc-backend-31kk.onrender.com/api';
 
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('token', data.token);
 
         // Redirect to welcome screen
-        window.location.href = "welcome.html";
+        window.location.href = "/welcome";
       } else {
         showError('usernameError', data.detail || 'Login failed');
       }
