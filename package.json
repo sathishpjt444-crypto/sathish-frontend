@@ -1,0 +1,14 @@
+{
+  "name": "ai-smart-document-assistant-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for AI Smart Document Assistant",
+  "scripts": {
+    "build": "mkdir -p public && cp -r pages css js assets public/ 2>/dev/null || (echo 'Copying static files...' && xcopy pages public\\pages /E /I /Y && xcopy css public\\css /E /I /Y && xcopy js public\\js /E /I /Y && xcopy assets public\\assets /E /I /Y)",
+    "start": "python -m http.server 3000"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": "18.x"
+  }
+}
