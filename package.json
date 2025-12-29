@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Frontend for AI Smart Document Assistant",
   "scripts": {
-    "build": "mkdir -p public && cp -r pages css js assets public/ 2>/dev/null || (echo 'Copying static files...' && xcopy pages public\\pages /E /I /Y && xcopy css public\\css /E /I /Y && xcopy js public\\js /E /I /Y && xcopy assets public\\assets /E /I /Y)",
+    "build": "mkdir -p public && cp index.html public/ && cp -r pages css js assets public/ 2>/dev/null || true",
     "start": "python -m http.server 3000"
   },
   "dependencies": {},
