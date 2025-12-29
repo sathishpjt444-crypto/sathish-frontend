@@ -2,7 +2,7 @@
    UPLOAD PAGE JAVASCRIPT
    ======================================== */
 
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = 'https://ai-doc-backend-31kk.onrender.com/api';
 let selectedFile = null;
 
 document.addEventListener('DOMContentLoaded', () => {
