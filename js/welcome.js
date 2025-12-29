@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     container.style.transition = 'opacity 0.5s ease';
 
     setTimeout(() => {
-      window.location.href = '/home.html';
+      window.location.href = "home.html";
     }, 500);
   });
 

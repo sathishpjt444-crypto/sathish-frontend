@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('token', data.token);
 
         // Redirect to welcome screen
-        window.location.href = '/welcome.html';
+        window.location.href = "welcome.html";
       } else {
         showError('usernameError', data.detail || 'Login failed');
       }
