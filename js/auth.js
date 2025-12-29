@@ -2,7 +2,7 @@
    LOGIN PAGE JAVASCRIPT
    ======================================== */
 
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = 'https://ai-doc-backend-31kk.onrender.com/api';
 
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('loginForm');
