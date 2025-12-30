@@ -2,7 +2,7 @@
    CHAT PAGE JAVASCRIPT
    ======================================== */
 
-const API_BASE_URL = (window.__ENV && window.__ENV.VITE_API_URL) || 'https://ai-doc-backend-31kk.onrender.com/chat';;
+const API_BASE_URL = (window.__ENV && window.__ENV.VITE_API_URL) || 'https://ai-doc-backend-31kk.onrender.com/api';;
 let documentId = null;
 let chunks = [];
 let chatHistory = [];
