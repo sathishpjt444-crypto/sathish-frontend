@@ -8,7 +8,9 @@ let selectedFile = null;
 document.addEventListener('DOMContentLoaded', () => {
   // Check authentication
   const username = localStorage.getItem('username');
-  if (!username) {
+  const token = localStorage.getItem('token');
+  if (!username || !token) {
+    localStorage.clear();
     window.location.href = '/';
     return;
   }
@@ -66,7 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (!uploadResponse.ok) {
-        const error = await uploadResponse.json();
+        // If token problems, clear storage and redirect to login
+        if (uploadResponse.status === 401) {
+          const error = await uploadResponse.json().catch(() => ({}));
+          const msg = error.detail || '';
+          if (msg.includes('Token') || msg.toLowerCase().includes('invalid')) {
+            localStorage.clear();
+            alert('Session expired. Please login again.');
+            window.location.href = '/';
+            return;
+          }
+        }
+
+        const error = await uploadResponse.json().catch(() => ({ detail: 'Upload failed' }));
         throw new Error(error.detail || 'Upload failed');
       }
 
@@ -87,6 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (!processResponse.ok) {
+        if (processResponse.status === 401) {
+          localStorage.clear();
+          alert('Session expired. Please login again.');
+          window.location.href = '/';
+          return;
+        }
         const error = await processResponse.json();
         throw new Error(error.detail || 'Processing failed');
       }

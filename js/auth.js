@@ -32,13 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Save user info to session/local storage
+        // Save user info to localStorage
         localStorage.setItem('user_id', data.user_id);
         localStorage.setItem('username', data.username);
-        localStorage.setItem('token', data.token);
+        // Support both 'token' and 'access_token' response keys
+        const token = data.token || data.access_token || data.accessToken;
+        if (token) {
+          localStorage.setItem('token', token);
+        }
 
         // Redirect to welcome screen
-        window.location.href = "/welcome";
+        window.location.href = "/welcome.html";
       } else {
         showError('usernameError', data.detail || 'Login failed');
       }
